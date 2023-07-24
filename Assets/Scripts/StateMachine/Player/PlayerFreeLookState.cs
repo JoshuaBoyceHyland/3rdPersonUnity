@@ -7,6 +7,10 @@ public class PlayerFreeLookState : PlayerBaseState
 {
 
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine){} // required for the base class
+
+    // read only means as soon as assigned can not be changed, used for things like below which will be assigned at run time. In which case const will not work 
+    private readonly int FreelookHash = Animator.StringToHash("FreeLookSpeed"); // hash is an integer id, quicker than user integer or string
+    const float AnimatorDampTime = 0.1f;
     private float stateDuration = 0f;
     public override void Enter()
     {
@@ -22,17 +26,19 @@ public class PlayerFreeLookState : PlayerBaseState
         // use of the controller handles collisions
         stateMachine.Controller.Move(movement * stateMachine.StandardSpeed * deltaTime);
 
-        if(stateMachine.InputReader.MovementValue == Vector2.zero)
+        if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
-            stateMachine.Animator.SetFloat("FreeLookSpeed", 0, 0.1f, deltaTime); // specify the variable, the valure you want to set to, the damptime (smoothing value)
+            stateMachine.Animator.SetFloat(FreelookHash, 0, AnimatorDampTime, deltaTime); // specify the variable, the valure you want to set to, the damptime (smoothing value)
             return;
         }
 
-        stateMachine.Animator.SetFloat("FreeLookSpeed", 1, 0.1f, deltaTime); 
-        stateMachine.transform.rotation = Quaternion.LookRotation(movement);
-     
+        stateMachine.Animator.SetFloat(FreelookHash, 1, AnimatorDampTime, deltaTime);
+        FaceMovementDirection(movement, deltaTime);
+
     }
+
     
+
     public override void Exit()
     {
         stateMachine.InputReader.JumpEvent-=OnJump;
@@ -68,5 +74,12 @@ public class PlayerFreeLookState : PlayerBaseState
         return NewCameraRelativeMovement;
     }
 
-
+    private void FaceMovementDirection(Vector3 movement, float DeltaTime)
+    {
+        stateMachine.transform.rotation = Quaternion.Lerp(
+            stateMachine.transform.rotation, // current rotation
+            Quaternion.LookRotation(movement), // goal rotation point
+            DeltaTime * stateMachine.RotationSmooth // makes sure the smooth is independent of framerate
+        );
+    }
 }

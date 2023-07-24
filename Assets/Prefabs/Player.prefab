@@ -130,8 +130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <InputReader>k__BackingField: {fileID: 8494445814495153876}
   <Controller>k__BackingField: {fileID: 1447893753890993612}
-  <StandardSpeed>k__BackingField: 6
   <Animator>k__BackingField: {fileID: 0}
+  <StandardSpeed>k__BackingField: 6
+  <RotationSmooth>k__BackingField: 10
 --- !u!95 &7450326732036332959
 Animator:
   serializedVersion: 5
