@@ -14,9 +14,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions    // inherits
 // needs to be public so statemachine can then be notified of a jump to change 
     public event Action JumpEvent; 
     public event Action DodgeEvent;
+    public event Action TargetingToggleEvent; 
     public Vector2 MovementValue{get; private set;}
-
-
 
     private Controls controls; 
 
@@ -60,5 +59,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions    // inherits
     public void OnLook(InputAction.CallbackContext context)
     {
         
+    }
+
+    public void OnTargetLockToggle(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            TargetingToggleEvent?.Invoke();
+        }
     }
 }

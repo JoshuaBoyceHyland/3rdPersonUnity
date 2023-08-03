@@ -62,6 +62,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TargetLockToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""975e0093-a163-4456-b31c-8d1e36543fe0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -196,6 +205,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b83693f7-ea3a-46c7-ab61-b8a88fb22574"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & mouse"",
+                    ""action"": ""TargetLockToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07aa3045-5fe2-4540-a802-1b6258e50118"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""TargetLockToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -236,6 +267,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        m_Player_TargetLockToggle = m_Player.FindAction("TargetLockToggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -301,6 +333,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dodge;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
+    private readonly InputAction m_Player_TargetLockToggle;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -309,6 +342,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
+        public InputAction @TargetLockToggle => m_Wrapper.m_Player_TargetLockToggle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +364,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @TargetLockToggle.started += instance.OnTargetLockToggle;
+            @TargetLockToggle.performed += instance.OnTargetLockToggle;
+            @TargetLockToggle.canceled += instance.OnTargetLockToggle;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -346,6 +383,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @TargetLockToggle.started -= instance.OnTargetLockToggle;
+            @TargetLockToggle.performed -= instance.OnTargetLockToggle;
+            @TargetLockToggle.canceled -= instance.OnTargetLockToggle;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -387,5 +427,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnDodge(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnTargetLockToggle(InputAction.CallbackContext context);
     }
 }

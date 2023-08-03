@@ -9,30 +9,20 @@ public class Targeter : MonoBehaviour
 
   private void OnTriggerEnter(Collider Other)
   {
-    Target InRangeObject = Other.GetComponent<Target>(); // gets the Target component if there is any 
-    Debug.Log("target enter");
-    if(InRangeObject != null) // if this variable is null means that this is not a releveant object to out targeter
+    // checks if other has a Target component, if it does it will put it into the InrAgneObject 
+    if(Other.TryGetComponent<Target>(out Target InRangeTarget))
     {
-        Targets.Add(InRangeObject); // adds object to list of targets
+      Targets.Add(InRangeTarget);
     }
+    
   }
 
   private void OnTriggerExit(Collider Other)
   {
-    Target ObjectLeavingRange = Other.GetComponent<Target>(); // gets the Target component if there is any
-    Debug.Log("target exit");
-    if(ObjectLeavingRange != null) // if this variable is null means that this is not a releveant object to out targeter
+    if(Other.TryGetComponent<Target>(out Target ObjectLeavingRange))
     {
-        Targets.Remove(ObjectLeavingRange); // adds object to list of targets
+      Targets.Remove(ObjectLeavingRange);
     }
-
-    /*
-    could also be done 
-
-    if(ObjectLeavingRange == null){return} 
-    
-     Targets.Remove(ObjectLeavingRange);
-    */
   }
 
 }

@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TargetLockToggle",
+                    "type": "Button",
+                    "id": "975e0093-a163-4456-b31c-8d1e36543fe0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -172,6 +181,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b83693f7-ea3a-46c7-ab61-b8a88fb22574",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & mouse",
+                    "action": "TargetLockToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07aa3045-5fe2-4540-a802-1b6258e50118",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TargetLockToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

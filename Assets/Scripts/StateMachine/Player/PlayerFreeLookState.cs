@@ -14,9 +14,9 @@ public class PlayerFreeLookState : PlayerBaseState
     private float stateDuration = 0f;
     public override void Enter()
     {
-        Debug.Log("entering");
+        Debug.Log("entering free looks tate");
         stateMachine.InputReader.JumpEvent+=OnJump; // subscribes the event to trigger the method if called
-        
+        stateMachine.InputReader.TargetingToggleEvent+=OnTargetToggle; 
     }
 
     public override void Tick(float deltaTime)
@@ -42,6 +42,7 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.JumpEvent-=OnJump;
+        stateMachine.InputReader.TargetingToggleEvent-=OnTargetToggle;
         Debug.Log("exiting");
     }
 
@@ -54,6 +55,12 @@ public class PlayerFreeLookState : PlayerBaseState
         
     }
 
+    private void OnTargetToggle()
+    {
+        Debug.Log("Target toggled");
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+
+    }
     
     private Vector3 CalculateMovement()
     {
