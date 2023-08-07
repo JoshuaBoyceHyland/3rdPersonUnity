@@ -5,7 +5,7 @@ using UnityEngine;
 public class Targeter : MonoBehaviour
 {
   public List<Target> Targets = new List<Target>(); // will store all targets currently in range of the targets collider
-
+  public Target CurrentTarget {get; private set;}
 
   private void OnTriggerEnter(Collider Other)
   {
@@ -24,5 +24,22 @@ public class Targeter : MonoBehaviour
       Targets.Remove(ObjectLeavingRange);
     }
   }
+
+  public bool SelectTarget()
+  {
+    if(Targets.Count != 0) // checking if there is any avaiable targets
+    {
+      CurrentTarget = Targets[0]; // if there are we are selecting the first 
+      return true; // then letting the free state know there are available targets
+    }
+
+    return false; 
+  }
+
+
+    public void Cancel()
+    {
+      CurrentTarget = null; // 
+    }
 
 }

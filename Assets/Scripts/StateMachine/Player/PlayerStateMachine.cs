@@ -10,8 +10,8 @@ public class PlayerStateMachine : StateMachine
     // in this case it can be publicly got but only privately set by the Player state machine
     [field:SerializeField] public InputReader InputReader {get; private set;} 
     [field:SerializeField] public CharacterController Controller {get; private set;} 
-
     [field:SerializeField] public Animator Animator {get; private set;} 
+    [field:SerializeField] public Targeter Targeter {get; private set;} 
 
     [field:SerializeField] public float StandardSpeed {get; private set;} 
 
