@@ -10,6 +10,8 @@ public class PlayerFreeLookState : PlayerBaseState
 
     // read only means as soon as assigned can not be changed, used for things like below which will be assigned at run time. In which case const will not work 
     private readonly int FreelookHash = Animator.StringToHash("FreeLookSpeed"); // hash is an integer id, quicker than user integer or string
+    private readonly int FreelookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
+
     const float AnimatorDampTime = 0.1f;
     
     public override void Enter()
@@ -17,6 +19,7 @@ public class PlayerFreeLookState : PlayerBaseState
         Debug.Log("entering free looks tate");
         stateMachine.InputReader.JumpEvent+=OnJump; // subscribes the event to trigger the method if called
         stateMachine.InputReader.TargetingToggleEvent+=OnTargetToggle; 
+        stateMachine.Animator.Play(FreelookBlendTreeHash); // goes to the free look animator blend tree upon entering the state
     }
 
     public override void Tick(float deltaTime)

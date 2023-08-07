@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537662633359409800}
   m_LocalRotation: {x: 0.085630454, y: 0.04123812, z: -0.0035478016, w: -0.9954669}
-  m_LocalPosition: {x: 0, y: 0, z: 10.000001}
+  m_LocalPosition: {x: 0, y: 0, z: 9.9999695}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -207,8 +207,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6776886293185053985}
-  - {fileID: 9073344245660203093}
-  - {fileID: 3017775557573870155}
+  - {fileID: 5850360659563326795}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -236,7 +235,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3294917993604052440}
-  m_LocalRotation: {x: -0.022702666, y: 0.0014155969, z: 0.00003214614, w: 0.99974126}
+  m_LocalRotation: {x: -0.022702666, y: 0.0014155991, z: 0.00003214619, w: 0.99974126}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -497,6 +496,94 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+--- !u!1 &5587396809306912196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5850360659563326795}
+  - component: {fileID: 7492817243401490747}
+  m_Layer: 0
+  m_Name: State-Driven Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5850360659563326795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587396809306912196}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.085394, y: -10.622376, z: 2.7261562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9073344245660203093}
+  - {fileID: 3017775557573870155}
+  m_Father: {fileID: 8988990430580209532}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7492817243401490747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587396809306912196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325a6a3050a061e4b8aa51386c30e8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_AnimatedTarget: {fileID: 4278930620831959222}
+  m_LayerIndex: 0
+  m_ShowDebugText: 0
+  m_ChildCameras:
+  - {fileID: 7403239735016643955}
+  - {fileID: 8603358698501591764}
+  m_Instructions:
+  - m_FullHash: 585382737
+    m_VirtualCamera: {fileID: 7403239735016643955}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -479991077
+    m_VirtualCamera: {fileID: 8603358698501591764}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 0.5
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_ParentHash:
+  - m_Hash: 585382737
+    m_ParentHash: 756556552
+  - m_Hash: 230188126
+    m_ParentHash: 585382737
+  - m_Hash: 2009079396
+    m_ParentHash: 585382737
+  - m_Hash: -479991077
+    m_ParentHash: 756556552
 --- !u!1 &5660871130729792315
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,14 +738,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7845166183637382301}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.687491, y: -9.068774, z: -12.096892}
+  m_LocalPosition: {x: -1.6020975, y: 1.5536022, z: -14.823049}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1797121445711104556}
   - {fileID: 6510570900271257260}
   - {fileID: 5697448108507676627}
-  m_Father: {fileID: 8988990430580209532}
+  m_Father: {fileID: 5850360659563326795}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7403239735016643955
@@ -677,7 +764,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 11
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 5232855188744478561}
   m_Follow: {fileID: 2944188353208113996}
@@ -837,13 +924,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8042372728136465467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9727316, y: -8.318774, z: -18.31459}
+  m_LocalPosition: {x: 32.307434, y: 24.983685, z: 466.10165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4357192448341761242}
   - {fileID: 2291174541447032536}
-  m_Father: {fileID: 8988990430580209532}
+  m_Father: {fileID: 5850360659563326795}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8603358698501591764
@@ -1062,7 +1149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_FollowOffset: {x: 0, y: 0.28, z: -4}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1771,6 +1858,11 @@ PrefabInstance:
 --- !u!4 &2944188353208113996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8421427561928298085, guid: 78a47e7afb8b7ef4bbbb2c655f8a01cf, type: 3}
+  m_PrefabInstance: {fileID: 6630758849817367849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4278930620831959222 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7450326732036332959, guid: 78a47e7afb8b7ef4bbbb2c655f8a01cf, type: 3}
   m_PrefabInstance: {fileID: 6630758849817367849}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5232855188744478561 stripped

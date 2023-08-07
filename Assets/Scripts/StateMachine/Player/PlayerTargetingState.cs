@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlayerTargetingState : PlayerBaseState
 {
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine){}
+
+    private readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
+
+
     public override void Enter()
     {
         Debug.Log("entering targeting state");
         stateMachine.InputReader.TargetingToggleEvent+=OnTargetToggle;
+        stateMachine.Animator.Play(TargetingBlendTreeHash); // goes to the targeting animator blend tree upon entering the state
     }
     public override void Tick(float deltaTime)
     {
