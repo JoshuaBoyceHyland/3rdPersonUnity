@@ -25,6 +25,8 @@ public class PlayerTargetingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             return; 
         }
+
+        FaceTarget();
     }
     public override void Exit()
     {
