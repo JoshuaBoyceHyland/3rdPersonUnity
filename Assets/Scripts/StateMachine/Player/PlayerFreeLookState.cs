@@ -26,9 +26,9 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         Vector3 movement = CalculateMovement();
 
-        // use of the controller handles collisions
-        stateMachine.Controller.Move(movement * stateMachine.StandardSpeed * deltaTime);
-
+        
+        Move(movement * stateMachine.StandardSpeed, deltaTime); 
+        
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(FreelookHash, 0, AnimatorDampTime, deltaTime); // specify the variable, the valure you want to set to, the damptime (smoothing value)
