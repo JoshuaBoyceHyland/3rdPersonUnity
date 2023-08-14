@@ -16,7 +16,7 @@ public class PlayerFreeLookState : PlayerBaseState
     
     public override void Enter()
     {
-        Debug.Log("entering free looks tate");
+    
         stateMachine.InputReader.JumpEvent+=OnJump; // subscribes the event to trigger the method if called
         stateMachine.InputReader.TargetingToggleEvent+=OnTargetToggle; 
         stateMachine.Animator.Play(FreelookBlendTreeHash); // goes to the free look animator blend tree upon entering the state
@@ -46,21 +46,20 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         stateMachine.InputReader.JumpEvent-=OnJump;
         stateMachine.InputReader.TargetingToggleEvent-=OnTargetToggle;
-        Debug.Log("exiting");
+       
     }
 
 
 
     private void OnJump()
     {
-        Debug.Log("Jumped");
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         
     }
 
     private void OnTargetToggle()
     {
-        Debug.Log("Target toggled");
+      
         if(stateMachine.Targeter.SelectTarget())
         {
             stateMachine.SwitchState(new PlayerTargetingState(stateMachine));

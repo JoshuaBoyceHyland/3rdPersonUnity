@@ -15,7 +15,7 @@ public class ForceReciever : MonoBehaviour
         {
             // if this was set to 0, character will always be constintely falling if there is a minor slope, this way is set to a small - float
             YAxisVelocity = Physics.gravity.y * Time.deltaTime; 
-            Debug.Log(Physics.gravity.y * Time.deltaTime);
+        
         }
         else
         {

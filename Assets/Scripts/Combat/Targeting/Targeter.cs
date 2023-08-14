@@ -6,10 +6,18 @@ using UnityEngine;
 public class Targeter : MonoBehaviour
 {
   
+  private Camera MainCamera;
+
   public List<Target> Targets = new List<Target>(); // will store all targets currently in range of the targets collider
   public Target CurrentTarget {get; private set;}
 
   [SerializeField] private CinemachineTargetGroup cineTargetGroup; // gives us a reference to the targeting cameras, targeting groups 
+
+
+  private void Start()
+  {
+    MainCamera = Camera.main; 
+  }
 
   private void OnTriggerEnter(Collider Other)
   {
@@ -33,11 +41,46 @@ public class Targeter : MonoBehaviour
 
   public bool SelectTarget()
   {
+
+    Debug.Log("Selecting target");
     if(Targets.Count != 0) // checking if there is any avaiable targets
     {
-      CurrentTarget = Targets[0]; // if there are we are selecting the first 
-      cineTargetGroup.AddMember(Targets[0].transform, 1f, 2f); // adds target to target group list
-      return true; // then letting the free state know there are available targets
+
+      Target closestTarget = null; 
+      float closestDistance = Mathf.Infinity; // easier to compare
+
+      foreach(Target target in Targets)
+      {
+        Vector3 WindowRelativePos = MainCamera.WorldToViewportPoint(target.transform.position); // gets the position of the target relative to the cameras view port
+
+        Debug.Log(WindowRelativePos);
+        // 0 and 1 are the bounds of the cameras width and height, if the returned value is not within this range then it is not visible to within the screen
+        if(WindowRelativePos.x < 0 
+        || WindowRelativePos.x > 1
+        || WindowRelativePos.y < 0
+        || WindowRelativePos.y > 1
+        || WindowRelativePos.z < 0) // checking z prevents a bug where if camera is exactly opposite the target it will flip and select it
+        {
+          continue; 
+        }
+
+        Vector2 ClosestToCenter = new Vector2(WindowRelativePos.x,WindowRelativePos.y) - new Vector2(0.5f, 0.5f); 
+
+
+        if(ClosestToCenter.sqrMagnitude < closestDistance)
+        {
+          closestTarget = target;
+          closestDistance = ClosestToCenter.sqrMagnitude; // update for next loop
+        }
+      }
+
+      if(closestTarget != null )
+      {
+        CurrentTarget = closestTarget;
+        cineTargetGroup.AddMember(CurrentTarget.transform, 1f, 2f); // adds target to target group list
+        return true; // then letting the free state know there are available targets
+      }
+      
     }
 
     return false; 

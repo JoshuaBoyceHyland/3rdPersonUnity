@@ -35,12 +35,12 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.TargetingToggleEvent-=OnTargetToggle;
-        Debug.Log("exiting targeting state");
+    
     }
 
     private void OnTargetToggle()
     {
-        Debug.Log("targeting toggled");
+       
         stateMachine.Targeter.Cancel(); // sets the currentTarget to null
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
     }
