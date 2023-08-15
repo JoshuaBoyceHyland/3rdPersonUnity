@@ -17,6 +17,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions    // inherits
     public event Action TargetingToggleEvent; 
     public Vector2 MovementValue{get; private set;}
 
+    public bool IsAttacking {get; private set;}
+
     private Controls controls; 
 
 
@@ -67,5 +69,19 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions    // inherits
         {
             TargetingToggleEvent?.Invoke();
         }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            IsAttacking = true;
+        }
+        else if( context.canceled)
+        {
+            IsAttacking = false;
+        }
+
+
     }
 }

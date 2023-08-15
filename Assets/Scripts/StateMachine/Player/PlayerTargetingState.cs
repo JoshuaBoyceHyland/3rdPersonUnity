@@ -18,6 +18,11 @@ public class PlayerTargetingState : PlayerBaseState
     }
     public override void Tick(float deltaTime)
     {
+        if(stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine));
+            return;
+        }
         // this will exit current state if they player leaves our radius of targeting, they go out of range 
         if(stateMachine.Targeter.CurrentTarget == null)
         {

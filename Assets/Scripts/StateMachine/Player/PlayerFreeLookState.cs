@@ -24,17 +24,22 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        Vector3 movement = CalculateMovement();
 
-        
+        if(stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine));
+            return;
+        }
+
+        Vector3 movement = CalculateMovement();
         Move(movement * stateMachine.StandardMovementSpeed, deltaTime); 
         
+        // if there is no movement we idle
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(FreelookHash, 0, AnimatorDampTime, deltaTime); // specify the variable, the valure you want to set to, the damptime (smoothing value)
             return;
         }
-
         stateMachine.Animator.SetFloat(FreelookHash, 1, AnimatorDampTime, deltaTime);
         FaceMovementDirection(movement, deltaTime);
 
