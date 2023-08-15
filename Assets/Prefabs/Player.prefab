@@ -233,8 +233,17 @@ MonoBehaviour:
   <ForceReciever>k__BackingField: {fileID: 4438731783649563167}
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack1
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.6
   - <AnimationName>k__BackingField: Attack2
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 2
+    <ComboAttackTime>k__BackingField: 0.5
   - <AnimationName>k__BackingField: Attack3
+    <TransitionDuration>k__BackingField: 0.2
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0
   <StandardMovementSpeed>k__BackingField: 6
   <TagretingMovementSpeed>k__BackingField: 7
   <RotationSmooth>k__BackingField: 10
