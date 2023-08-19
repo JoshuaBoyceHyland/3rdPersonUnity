@@ -10,11 +10,12 @@ public class PlayerTargetingState : PlayerBaseState
     private readonly int TargetinForwardTreeHash = Animator.StringToHash("TargetingForward");
     private readonly int TargetingRightTreeHash = Animator.StringToHash("TargetingRight");
 
+    const float CrossFadeDurration = 0.1f;
     public override void Enter()
     {
        
         stateMachine.InputReader.TargetingToggleEvent+=OnTargetToggle;
-        stateMachine.Animator.Play(TargetingBlendTreeHash); // goes to the targeting animator blend tree upon entering the state
+        stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFadeDurration); // goes to the targeting animator blend tree upon entering the state
     }
     public override void Tick(float deltaTime)
     {

@@ -15,10 +15,12 @@ public class PlayerStateMachine : StateMachine
     [field:SerializeField] public Targeter Targeter {get; private set;} 
     [field:SerializeField] public ForceReciever ForceReciever {get; private set;}
     [field:SerializeField] public Attack[] Attacks {get; private set;}
+    [field:SerializeField] public WeaponDamage WeaponDamage {get; private set;}
     [field:SerializeField] public float StandardMovementSpeed {get; private set;} 
     [field:SerializeField] public float TagretingMovementSpeed {get; private set;} 
     [field:SerializeField] public float RotationSmooth {get; private set;} 
     
+
     public Transform MainCameraTransform{get; private set;} 
     // Start is called before the first frame update
     void Start()

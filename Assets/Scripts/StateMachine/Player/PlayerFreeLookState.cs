@@ -13,13 +13,13 @@ public class PlayerFreeLookState : PlayerBaseState
     private readonly int FreelookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
 
     const float AnimatorDampTime = 0.1f;
-    
+    const float CrossFadeDurration = 0.1f;
     public override void Enter()
     {
     
         stateMachine.InputReader.JumpEvent+=OnJump; // subscribes the event to trigger the method if called
         stateMachine.InputReader.TargetingToggleEvent+=OnTargetToggle; 
-        stateMachine.Animator.Play(FreelookBlendTreeHash); // goes to the free look animator blend tree upon entering the state
+        stateMachine.Animator.CrossFade(FreelookBlendTreeHash, CrossFadeDurration); // goes to the free look animator blend tree upon entering the state
     }
 
     public override void Tick(float deltaTime)

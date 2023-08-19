@@ -6,8 +6,6 @@ using UnityEngine;
 public class PlayerAttackingState : PlayerBaseState
 {
 
-    private float previousFrameTime;
-
     private bool forceApplied;
 
     private Attack currentAttack;
@@ -21,6 +19,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.WeaponDamage.SetAttack(currentAttack.Damage);
         stateMachine.Animator.CrossFadeInFixedTime(currentAttack.AnimationName, currentAttack.TransitionDuration); // plays the animation using the name set in the inspector and a fade time
     }
 

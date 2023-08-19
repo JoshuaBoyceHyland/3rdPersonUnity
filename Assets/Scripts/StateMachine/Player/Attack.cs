@@ -19,5 +19,6 @@ public class Attack
 
    [field: SerializeField] public float Force {get; private set;} // the power of the force when the player atttack with this animation
     
+   [field: SerializeField] public int Damage {get; private set;} // damage of this particular attack
    
 }

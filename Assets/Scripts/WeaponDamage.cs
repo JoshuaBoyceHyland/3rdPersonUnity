@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class WeaponDamage : MonoBehaviour
 {
+    private int damage = new int();
+    
     [SerializeField] private Collider player; // neccesary to make sure you are not colliding with yourself
     [SerializeField] private List<Collider> alreadyCollidedWith;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +28,7 @@ public class WeaponDamage : MonoBehaviour
 
         if(other.TryGetComponent<Health>(out Health health))
         {
-            health.DealDamage(10);
+            health.DealDamage(damage);
         }
                 
     
@@ -35,5 +39,10 @@ public class WeaponDamage : MonoBehaviour
     private void OnEnable()
     {
         alreadyCollidedWith.Clear();
+    }
+
+    public void SetAttack(int attackDamage)
+    {
+        damage = attackDamage;
     }
 }
