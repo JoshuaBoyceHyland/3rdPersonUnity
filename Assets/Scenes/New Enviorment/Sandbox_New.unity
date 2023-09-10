@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 84daa41c453ed884689fd88d11e1acad, type: 2}
 --- !u!1001 &17282916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1162,6 +1162,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterController: {fileID: 668365077}
   drag: 0.3
+--- !u!195 &668365081 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 2547584749187548108, guid: 443e95a7a73ba6146afc444924240cdf, type: 3}
+  m_PrefabInstance: {fileID: 1625077168487087087}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &700651134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,7 +1216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1797121445711104556, guid: 559ad380770158144b09f1d8e60d7d6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.000005722046
+      value: -0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 1797121445711104556, guid: 559ad380770158144b09f1d8e60d7d6f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1219,7 +1224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1797121445711104556, guid: 559ad380770158144b09f1d8e60d7d6f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: 1797121445711104556, guid: 559ad380770158144b09f1d8e60d7d6f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3044,6 +3049,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 668365079}
     - target: {fileID: 4541470505062604007, guid: 443e95a7a73ba6146afc444924240cdf, type: 3}
+      propertyPath: <NavAgent>k__BackingField
+      value: 
+      objectReference: {fileID: 668365081}
+    - target: {fileID: 4541470505062604007, guid: 443e95a7a73ba6146afc444924240cdf, type: 3}
       propertyPath: <Controller>k__BackingField
       value: 
       objectReference: {fileID: 668365077}
@@ -3051,6 +3060,10 @@ PrefabInstance:
       propertyPath: <ForceReciever>k__BackingField
       value: 
       objectReference: {fileID: 668365080}
+    - target: {fileID: 4541470505062604007, guid: 443e95a7a73ba6146afc444924240cdf, type: 3}
+      propertyPath: <MovementSpeed>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4541470505062604007, guid: 443e95a7a73ba6146afc444924240cdf, type: 3}
       propertyPath: <PlayerDetectionRange>k__BackingField
       value: 10

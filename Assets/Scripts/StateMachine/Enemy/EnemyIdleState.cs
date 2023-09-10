@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyIdleState : EnemyBaseState
 {
 
-    private readonly int IdleBlendTreeHash = Animator.StringToHash("Locomotion");
+    private readonly int LocomtionBlendTreeHash = Animator.StringToHash("Locomotion");
     private readonly int SpeedHash = Animator.StringToHash("Speed");
     private const float CrossFadeDuration = 0.1f;
     private const float AnimatorDampTime = 0.1f;
@@ -16,7 +16,7 @@ public class EnemyIdleState : EnemyBaseState
  
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(IdleBlendTreeHash, CrossFadeDuration);
+        stateMachine.Animator.CrossFadeInFixedTime(LocomtionBlendTreeHash, CrossFadeDuration);
     }
     public override void Tick(float deltaTime)
     {
@@ -25,7 +25,7 @@ public class EnemyIdleState : EnemyBaseState
         if(IsInChaseRange())
         {
             Debug.Log("In Range");
-            // change to chase state eventually
+            stateMachine.SwitchState( new EnemyChasingState(stateMachine));
         }
 
         // seting our animator to be at idle state through our speed parameter in locomotion blend tree
