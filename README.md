@@ -5,6 +5,7 @@
 
 
 # Player Movement 
-![](https://github.com/JoshuaBoyceHyland/3rdPersonUnity/blob/main/Gifs/Walking.gif)
+
+![](https://github.com/JoshuaBoyceHyland/3rdPersonUnity/blob/main/Gifs/Walking.gif =678x382)
 
 
