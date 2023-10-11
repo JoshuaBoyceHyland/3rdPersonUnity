@@ -6,6 +6,6 @@
 
 # Player Movement 
 
-![Alt Text](Gifs/Walking.gif =678x382)
+<img src="Gifs/Player.gif" width="250" height="250"/>
 
 
