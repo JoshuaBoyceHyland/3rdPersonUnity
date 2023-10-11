@@ -6,6 +6,6 @@
 
 # Player Movement 
 
-<img src="Gifs/Player.gif" width="678" height="382"/>
+<img src="Gifs/Walking.gif" width="678" height="382"/>
 
 
