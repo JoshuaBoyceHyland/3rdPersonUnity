@@ -6,6 +6,6 @@
 
 # Player Movement 
 
-![](https://github.com/JoshuaBoyceHyland/3rdPersonUnity/blob/main/Gifs/Player.gif = 678x382)
+![](https://github.com/JoshuaBoyceHyland/3rdPersonUnity/blob/main/Gifs/Player.gif| width=100)
 
 
