@@ -24,8 +24,8 @@ public class EnemyIdleState : EnemyBaseState
 
         if(IsInChaseRange())
         {
-            Debug.Log("In Range");
-            stateMachine.SwitchState( new EnemyChasingState(stateMachine));
+            //Debug.Log("In Range");
+            //stateMachine.SwitchState( new EnemyChasingState(stateMachine));
         }
 
         // seting our animator to be at idle state through our speed parameter in locomotion blend tree
