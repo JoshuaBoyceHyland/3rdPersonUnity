@@ -6,6 +6,6 @@
 
 # Player Movement 
 
-![](https://github.com/JoshuaBoyceHyland/3rdPersonUnity/blob/main/Gifs/Player.gif | width=100)
+<img src="Gifs/Player.gif" width="250" height="250"/>
 
 
