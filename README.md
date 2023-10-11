@@ -17,3 +17,6 @@
 <img src="Gifs/TargetedAttack.gif" width="678" height="382"/>
 
 
+# Enemy Chaing Player (In Progress)
+
+<img src="Gifs/EnemyChase.gif" width="678" height="382"/>
