@@ -23,6 +23,18 @@ public abstract class  EnemyBaseState : State
       stateMachine.Controller.Move((Motion + stateMachine.ForceReciever.Movement) * DeltaTime);
    } 
    
+    protected void FacePlayer()
+    {
+        if (stateMachine.Player != null)
+        {
+
+            Vector3 DirectionToTarget = stateMachine.Player.transform.position - stateMachine.transform.position;
+            DirectionToTarget.y = 0f; // dont want the ypos of target to effect player
+
+            stateMachine.transform.rotation = Quaternion.LookRotation(DirectionToTarget); // turns the vector into Quaterian for us 
+        }
+    }
+
    protected bool IsInChaseRange()
    {
       // previous way I did which was less efficient as it used magnitude which is less efficeint oto do 

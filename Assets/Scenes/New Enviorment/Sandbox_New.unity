@@ -3058,6 +3058,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 668365077}
     - target: {fileID: 4541470505062604007, guid: 443e95a7a73ba6146afc444924240cdf, type: 3}
+      propertyPath: <AttackRange>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541470505062604007, guid: 443e95a7a73ba6146afc444924240cdf, type: 3}
       propertyPath: <ForceReciever>k__BackingField
       value: 
       objectReference: {fileID: 668365080}

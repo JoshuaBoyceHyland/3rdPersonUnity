@@ -9,6 +9,7 @@ public class EnemyStateMachine : StateMachine
   [field:SerializeField] public ForceReciever ForceReciever {get; private set;}
   [field:SerializeField] public CharacterController Controller {get; private set;} 
   [field:SerializeField] public float PlayerDetectionRange {get; private set;}
+  [field: SerializeField] public float AttackRange { get; private set; }
   [field:SerializeField] public int MovementSpeed {get; private set;} 
   public GameObject Player {get; private set;}
 
