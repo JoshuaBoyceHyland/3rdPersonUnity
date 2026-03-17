@@ -26,6 +26,7 @@ public class EnemyIdleState : EnemyBaseState
         {
             Debug.Log("In Range");
             stateMachine.SwitchState( new EnemyChasingState(stateMachine));
+            return;
         }
 
         // seting our animator to be at idle state through our speed parameter in locomotion blend tree
