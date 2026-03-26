@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponDamage : MonoBehaviour
 {
     private int damage = new int();
-    
+    private float knockback = new float();
     [SerializeField] private Collider player; // neccesary to make sure you are not colliding with yourself
     [SerializeField] private List<Collider> alreadyCollidedWith;
 
@@ -30,7 +30,12 @@ public class WeaponDamage : MonoBehaviour
         {
             health.DealDamage(damage);
         }
-                
+
+        if( other.TryGetComponent<ForceReciever>(out ForceReciever ForceReciever )) 
+        {
+            Vector3 dir = ( other.transform.position - player.transform.position).normalized ;
+            ForceReciever.AddForce( dir * knockback);
+        }
     
     
     }
@@ -41,8 +46,9 @@ public class WeaponDamage : MonoBehaviour
         alreadyCollidedWith.Clear();
     }
 
-    public void SetAttack(int attackDamage)
+    public void SetAttack(int attackDamage, float attackKnockback)
     {
         damage = attackDamage;
+        knockback = attackKnockback;
     }
 }

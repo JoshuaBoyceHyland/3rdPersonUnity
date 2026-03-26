@@ -19,13 +19,35 @@ public class PlayerStateMachine : StateMachine
     [field:SerializeField] public float StandardMovementSpeed {get; private set;} 
     [field:SerializeField] public float TagretingMovementSpeed {get; private set;} 
     [field:SerializeField] public float RotationSmooth {get; private set;} 
-    
-
+    [field:SerializeField] public Health Health {get; private set;} 
+    [field:SerializeField] public Ragdoll Ragdoll {get; private set;} 
     public Transform MainCameraTransform{get; private set;} 
     // Start is called before the first frame update
     void Start()
     {
         MainCameraTransform = Camera.main.transform; // setting mainCAmeraTransform reference at start
         SwitchState(new PlayerFreeLookState(this));
+    }
+
+    private void OnEnable()
+    {
+        Health.OnTakeDamage += HandleTakeDamage;
+        Health.OnDeath += HandleDeath;
+    }
+
+    private void OnDisable()
+    {
+        Health.OnTakeDamage -= HandleTakeDamage;
+        Health.OnDeath -= HandleDeath;
+    }
+
+    private void HandleTakeDamage()
+    {
+        SwitchState( new PlayerImpactState(this));
+    }
+
+    private void HandleDeath()
+    {
+        SwitchState( new PlayerDeathState(this));
     }
 }

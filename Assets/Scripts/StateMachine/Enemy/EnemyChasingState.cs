@@ -48,8 +48,12 @@ public class EnemyChasingState : EnemyBaseState
 
     private void MoveToPlayer(float DeltaTime)
     {
-        stateMachine.NavAgent.destination = stateMachine.Player.transform.position; 
-        Move(stateMachine.NavAgent.desiredVelocity.normalized * stateMachine.MovementSpeed, DeltaTime); // here we are using direction from the nav agent to move the enemy in direction of the player
+        if( stateMachine.NavAgent.isOnNavMesh)
+        {
+            stateMachine.NavAgent.destination = stateMachine.Player.transform.position; 
+            Move(stateMachine.NavAgent.desiredVelocity.normalized * stateMachine.MovementSpeed, DeltaTime); // here we are using direction from the nav agent to move the enemy in direction of the player
+        }
+       
         stateMachine.NavAgent.velocity = stateMachine.Controller.velocity; // updating the nav agent as we dont have it set up to do this automatically
     }
 

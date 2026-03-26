@@ -12,7 +12,14 @@ public class EnemyStateMachine : StateMachine
   [field:SerializeField] public float PlayerDetectionRange {get; private set;}
   [field: SerializeField] public float AttackRange { get; private set; }
   [field: SerializeField] public int AttackDamage { get; private set; }
+  [field: SerializeField] public int AttackKnockback { get; private set; }
   [field:SerializeField] public int MovementSpeed {get; private set;} 
+
+  [field:SerializeField] public Health Health {get; private set;} 
+
+  [field:SerializeField] public Target Target {get; private set;} 
+
+  [field:SerializeField] public Ragdoll Ragdoll {get; private set;} 
   public GameObject Player {get; private set;}
 
   private void Start()
@@ -22,6 +29,28 @@ public class EnemyStateMachine : StateMachine
     NavAgent.updateRotation = false; 
     Player = GameObject.FindGameObjectWithTag("Player"); // will find our player by tag, not best efficiently but not too bad as we only run once
     SwitchState( new EnemyIdleState (this));
+  }
+
+  private void OnEnable()
+  {
+      Health.OnTakeDamage += HandleTakeDamage;
+      Health.OnDeath += HandleDeath;
+  }
+
+  private void OnDisable()
+  {
+      Health.OnTakeDamage -= HandleTakeDamage;
+      Health.OnDeath -= HandleDeath;
+  }
+
+  private void HandleTakeDamage()
+  {
+    SwitchState( new EnemyImpactState(this));
+  }
+
+  private void HandleDeath()
+  {
+      SwitchState( new EnemyDeathState(this));
   }
 
   private void OnDrawGizmosSelected()

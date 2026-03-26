@@ -19,7 +19,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.WeaponDamage.SetAttack(currentAttack.Damage);
+        stateMachine.WeaponDamage.SetAttack(currentAttack.Damage, currentAttack.Knockback);
         stateMachine.Animator.CrossFadeInFixedTime(currentAttack.AnimationName, currentAttack.TransitionDuration); // plays the animation using the name set in the inspector and a fade time
     }
 
@@ -28,7 +28,7 @@ public class PlayerAttackingState : PlayerBaseState
 
         Move(deltaTime);
         FaceTarget();
-        float normalizedTime = GetNormalisedTime();
+        float normalizedTime = GetNormalisedTime(stateMachine.Animator);
 
         // if we have finished the animation 
         if(normalizedTime < 1f) 
@@ -64,23 +64,6 @@ public class PlayerAttackingState : PlayerBaseState
         
     }
 
-    private float GetNormalisedTime()
-    {
-        AnimatorStateInfo currentStateInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0); // get info of current animation stay on layer 1
-        AnimatorStateInfo nextStateInfo = stateMachine.Animator.GetNextAnimatorStateInfo(0); 
-
-        if(stateMachine.Animator.IsInTransition(0) && nextStateInfo.IsTag("Attack")) // if we are transitioning to an attack animaton send that animation normalized time
-        {
-            return nextStateInfo.normalizedTime;
-        }
-        else if(!stateMachine.Animator.IsInTransition(0) && currentStateInfo.IsTag("Attack")) // otherwise if we are not transitioning but still in an attack animation send the current normalized time
-        {
-            return currentStateInfo.normalizedTime;
-        }
-
-
-        return 0f;
-    }
 
     private void TryComboAttack(float normalizedTime)
     {

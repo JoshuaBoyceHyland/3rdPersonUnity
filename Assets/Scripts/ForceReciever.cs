@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ForceReciever : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ForceReciever : MonoBehaviour
 
         
     [SerializeField] CharacterController CharacterController;
-
+    [SerializeField] private NavMeshAgent agent;
     [SerializeField] private float drag = 0.3f; 
 
     public Vector3 Movement => impact + Vector3.up * YAxisVelocity; // when accessed by states will return a vector3 with only a y value, which will be our gravity effect
@@ -31,10 +32,25 @@ public class ForceReciever : MonoBehaviour
         }
 
         impact = Vector3.SmoothDamp(impact ,Vector3.zero, ref dampingVelocity, drag ); // passing in the current value, the desired value, a reference to the damping velocity and the drag
+
+        if( agent != null )
+        {
+            if( impact.sqrMagnitude < 0.2f * 0.2f)
+            {
+                impact = Vector3.zero;
+                agent.enabled = true;
+            }
+            
+        }
     }
 
     public void AddForce(Vector3 force)
     {
         impact += force;
+
+        if( agent != null )
+        {
+            agent.enabled = false;
+        }
     }
 }

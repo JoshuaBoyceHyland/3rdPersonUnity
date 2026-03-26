@@ -24,6 +24,12 @@ public class PlayerTargetingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;
         }
+
+        if(stateMachine.InputReader.IsBlocking)
+        {
+            stateMachine.SwitchState(new PlayerBlockingState(stateMachine ));
+            return;
+        }
         // this will exit current state if they player leaves our radius of targeting, they go out of range 
         if(stateMachine.Targeter.CurrentTarget == null)
         {

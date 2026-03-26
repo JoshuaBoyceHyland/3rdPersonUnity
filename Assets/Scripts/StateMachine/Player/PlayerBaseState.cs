@@ -39,4 +39,16 @@ public abstract class PlayerBaseState : State
          stateMachine.transform.rotation = Quaternion.LookRotation(DirectionToTarget); // turns the vector into Quaterian for us 
       }
    }
+
+   protected void ReturnToLocomotion()
+   {
+      if( stateMachine.Targeter.CurrentTarget != null)
+      {
+         stateMachine.SwitchState( new PlayerTargetingState(stateMachine) );
+      }
+      else
+      {
+         stateMachine.SwitchState( new PlayerFreeLookState(stateMachine) );
+      }
+   }
 }
